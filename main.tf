@@ -15,3 +15,15 @@ module "vpc" {
   private_subnet_1_az   = "ap-south-1a"
   private_subnet_2_az   = "ap-south-1b"
 }
+
+module "security_group" {
+
+  source = "./modules/security-group"
+
+
+  vpc_id = module.vpc.vpc_id
+
+
+  environment = var.environment
+
+}
