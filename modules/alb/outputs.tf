@@ -18,10 +18,3 @@ output "target_group_name" {
   value       = aws_lb_target_group.web.name
 }
 
-output "alb_dns_name" {
-
-  description = "Application Load Balancer DNS Name"
-
-  value = aws_lb.main.dns_name
-
-}

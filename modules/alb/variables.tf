@@ -12,3 +12,19 @@ variable "vpc_id" {
   description = "VPC ID where the Target Group will be created"
   type        = string
 }
+variable "environment" {
+  description = "Environment name"
+  type        = string
+}
+
+variable "target_group_port" {
+  description = "Target Group port"
+  type        = number
+  default     = 80
+}
+
+variable "target_group_protocol" {
+  description = "Target Group protocol"
+  type        = string
+  default     = "HTTP"
+}

@@ -48,4 +48,22 @@ module "ec2" {
     module.vpc.private_subnet_1_id,
     module.vpc.private_subnet_2_id
   ]
+  target_group_arn = module.alb.target_group_arn
+}
+
+module "alb" {
+
+  source = "./modules/alb"
+
+  environment = var.environment
+
+  vpc_id = module.vpc.vpc_id
+
+  public_subnet_ids = [
+    module.vpc.public_subnet_1_id,
+    module.vpc.public_subnet_2_id
+  ]
+
+  alb_security_group_id = module.security_group.alb_security_group_id
+
 }
