@@ -33,3 +33,19 @@ module "iam" {
 
   environment = var.environment
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+
+  ami_id        = "ami-00d2dbb426772b03a"
+  instance_type = "t3.micro"
+  key_name      = "terraform-key"
+
+  ec2_security_group_id = module.security_group.ec2_security_group_id
+  instance_profile_name = module.iam.instance_profile_name
+
+  private_subnet_ids = [
+    module.vpc.private_subnet_1_id,
+    module.vpc.private_subnet_2_id
+  ]
+}
