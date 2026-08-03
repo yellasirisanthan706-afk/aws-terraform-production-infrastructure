@@ -1,19 +1,19 @@
 module "vpc" {
   source = "./modules/vpc"
 
-  vpc_cidr              = "10.0.0.0/16"
+  vpc_cidr = "10.0.0.0/16"
 
-  public_subnet_1_cidr  = "10.0.1.0/24"
-  public_subnet_2_cidr  = "10.0.2.0/24"
+  public_subnet_1_cidr = "10.0.1.0/24"
+  public_subnet_2_cidr = "10.0.2.0/24"
 
   private_subnet_1_cidr = "10.0.3.0/24"
   private_subnet_2_cidr = "10.0.4.0/24"
 
-  public_subnet_1_az    = "ap-south-1a"
-  public_subnet_2_az    = "ap-south-1b"
+  public_subnet_1_az = "ap-south-1a"
+  public_subnet_2_az = "ap-south-1b"
 
-  private_subnet_1_az   = "ap-south-1a"
-  private_subnet_2_az   = "ap-south-1b"
+  private_subnet_1_az = "ap-south-1a"
+  private_subnet_2_az = "ap-south-1b"
 }
 
 module "security_group" {
@@ -26,4 +26,10 @@ module "security_group" {
 
   environment = var.environment
 
+}
+
+module "iam" {
+  source = "./modules/iam"
+
+  environment = var.environment
 }

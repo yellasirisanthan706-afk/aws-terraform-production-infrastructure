@@ -1,8 +1,8 @@
 resource "aws_lb" "main" {
 
-  name               = "prod-alb"
+  name = "prod-alb"
 
-  internal           = false
+  internal = false
 
   load_balancer_type = "application"
 
@@ -20,13 +20,13 @@ resource "aws_lb" "main" {
 
 resource "aws_lb_target_group" "web" {
 
-  name     = "prod-target-group"
+  name = "prod-target-group"
 
-  port     = 80
+  port = 80
 
   protocol = "HTTP"
 
-  vpc_id   = var.vpc_id
+  vpc_id = var.vpc_id
 
   target_type = "instance"
 
