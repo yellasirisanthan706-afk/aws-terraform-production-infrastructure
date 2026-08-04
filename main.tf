@@ -67,3 +67,21 @@ module "alb" {
   alb_security_group_id = module.security_group.alb_security_group_id
 
 }
+
+module "cloudfront" {
+  source = "./modules/cloudfront"
+
+  alb_dns_name = module.alb.alb_dns_name
+
+  environment = var.environment
+}
+
+module "disaster_recovery" {
+  source = "./modules/disaster-recovery"
+
+  providers = {
+    aws = aws.dr
+  }
+
+  backup_bucket_name = "santhan-dr-backup-652284808089"
+}
